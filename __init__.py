@@ -9,6 +9,7 @@
 # (at your option) any later version.
 # loading by Fahmihorizon from the Noun Project
 # palette by Markus from the Noun Project
+# Grundidee des Reloadens: https://gis.stackexchange.com/a/371589/67477 
 #---------------------------------------------------------------------
 
 from PyQt5.QtWidgets import QAction, QMessageBox
