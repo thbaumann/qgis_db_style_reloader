@@ -42,25 +42,35 @@ class DatabaseStyleLoader:
         layers = QgsProject.instance().mapLayers()
 
         try:
+            layer_with_db_styles=0
             for layer_id, layer in layers.items():
                 if layer.dataProvider().name()=='postgres':
                     listedStyles = layer.listStylesInDatabase()
+                    print(listedStyles)
                     numberOfStyles = listedStyles[0]
-                    defaultStyleId = listedStyles[1][0]
-                    defaultStyleName = listedStyles[2][0]
-                    # print(defaultStyleName)
-                    # defaultStyleDate = listedStyles[3][0]
-                    if numberOfStyles > 0:
+                    if numberOfStyles<1:
+                        pass
+                    else:
+                        layer_with_db_styles+=1
+                        defaultStyleId = listedStyles[1][0]
+                        defaultStyleName = listedStyles[2][0]
+                        # defaultStyleDate = listedStyles[3][0]
                         styledoc = QDomDocument()
                         styleTuple = layer.getStyleFromDatabase(defaultStyleId)
                         styleqml = styleTuple[0]
                         styledoc.setContent(styleqml)
-                        #print(styledoc.toString())
                         layer.importNamedStyle(styledoc)
                         layer.triggerRepaint()
-                    
-            msg=u"Stile neu geladen."
-            self.showMessage(msg, Qgis.Success)
+
+            if layer_with_db_styles>0:                    
+                if layer_with_db_styles<2:
+                    msg=str(layer_with_db_styles)+u" Stil neu geladen."
+                else:
+                    msg=str(layer_with_db_styles)+u" Stile neu geladen."
+                self.showMessage(msg, Qgis.Success)
+            else:
+                msg=u"Keine Stile in der Datenbank verfügbar zum Neu-Laden."
+                self.showMessage(msg, Qgis.Warning)
             
         except Exception as e:
             msg=u"Es ist ein Fehler aufgetreten: "+str(e)
