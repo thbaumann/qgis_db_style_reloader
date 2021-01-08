@@ -5,6 +5,7 @@ __pycache__/
 
 .vscode/
 *.bat
+i18n/*.bat
 
 # C extensions
 *.so
