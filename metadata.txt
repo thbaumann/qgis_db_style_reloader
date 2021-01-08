@@ -2,7 +2,7 @@
 name=DB Style Reloader
 description=Database Style Reloader
 about=Reloads default QGIS Layer-Styles from PostgreSQL
-version=0.2
+version=0.3
 qgisMinimumVersion=3.10
 author=Thomas Baumann
 email=rdbath.regiodata@gmail.com
