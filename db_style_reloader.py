@@ -52,7 +52,6 @@ class DatabaseStyleLoader:
         return QCoreApplication.translate('DatabaseStyleLoader', message)
 
     def initGui(self):
-        self.plugin_dir = os.path.dirname(__file__)
         self.action =  QAction(QIcon(os.path.join(self.plugin_dir,"icon.svg")),"Style Reloader", self.iface.mainWindow())
         self.action.triggered.connect(self.load_style)
         self.iface.addToolBarIcon(self.action)
