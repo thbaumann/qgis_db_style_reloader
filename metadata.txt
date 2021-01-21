@@ -8,3 +8,4 @@ author=Thomas Baumann
 email=rdbath.regiodata@gmail.com
 repository=https://github.com/thbaumann/qgis_db_style_reloader
 category=Database
+experimental=True
