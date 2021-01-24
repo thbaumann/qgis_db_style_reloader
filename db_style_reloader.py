@@ -78,7 +78,6 @@ class DatabaseStyleLoader:
             self.iface.removeToolBarIcon(self.action)
         self.iface.removePluginDatabaseMenu("Style Reloader", self.action)
         self.iface.removePluginDatabaseMenu("Style Reloader", self.help_action)
-        #self.help_menu_main.removeAction(self.help_action)
         del_object=self.help_menu.menuAction()
         self.help_menu_main.removeAction(del_object)
         del self.action
@@ -103,7 +102,6 @@ class DatabaseStyleLoader:
             for layer_id, layer in layers.items():
                 if layer.dataProvider().name()=='postgres':
                     listedStyles = layer.listStylesInDatabase()
-                    #print(listedStyles)
                     numberOfStyles = listedStyles[0]
                     if numberOfStyles<1:
                         pass
@@ -111,14 +109,11 @@ class DatabaseStyleLoader:
                         layer_with_db_styles+=1
                         defaultStyleId = listedStyles[1][0]
                         defaultStyleName = listedStyles[2][0]
-                        # defaultStyleDate = listedStyles[3][0]
                         styledoc = QDomDocument()
                         styleTuple = layer.getStyleFromDatabase(defaultStyleId)
                         styleqml = styleTuple[0]
                         styledoc.setContent(styleqml)
                         updateable_layer_styles[layer]=styledoc
-                        #layer.importNamedStyle(styledoc)
-                        #layer.triggerRepaint()
             
 
 
@@ -127,24 +122,17 @@ class DatabaseStyleLoader:
                 number_updateble_layers=str(layer_with_db_styles)
                 if layer_with_db_styles<2:
                     question_string=self.tr(u"Do you want to update {} layerstyle?\n" \
-                 "The current layerstyles of the project will be overwritten!\n" \
+                 "The current active layerstyles of the project will be overwritten!\n" \
                  "Consider saving the project before you proceed.")
                 else:
                     question_string=self.tr(u"Do you want to update {} layerstyles?\n" \
-                 "The current layerstyles of the project will be overwritten!\n" \
+                 "The current active layerstyles of the project will be overwritten!\n" \
                  "Consider saving the project before you proceed.")
 
                 qmb_question=question_string.format(number_updateble_layers)
                 reply = QMessageBox.question(self.iface.mainWindow(), self.tr('Proceed?'), qmb_question, QMessageBox.Yes, QMessageBox.No)
                 if reply == QMessageBox.Yes:
                     for layer, styledoc in updateable_layer_styles.items():
-                        # we also could check if the style is still up to date but at the moment QGIS writes different XML when writing to DB or export with "exportNamedStyle"
-                        # d = QDomDocument()
-                        # layer.exportNamedStyle(d)
-                        # s = d.toString()
-                        # if s==styledoc.toString():
-                        #     print(layer.name()+" Stil weiter aktuell!")
-
                         layer.importNamedStyle(styledoc)
                         layer.triggerRepaint()
 

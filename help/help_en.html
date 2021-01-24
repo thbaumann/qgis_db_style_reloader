@@ -1,1 +1,40 @@
-en
+<head>
+<style>
+body {
+    font:1em helvetica,arial,freesans,clean,sans-serif;
+    color:black;
+    line-height:1.4em;
+    background-color: #F8F8F8;
+    padding: 0.7em;
+}
+#warning
+{
+color:red;
+font-size: 1.5em;
+}
+
+</style>
+</head>
+<body>
+<h1>Reload DB-Styles</h1>
+<p>This Plugin reads for all PostgreSQL-layers of the opened QGIS-Project the default-style which is saved in the PostgreSQL database and overwrites the current active style.</p>
+<p>You can find it:
+<ul>
+<li><p>in the database menu:</p> <img src="db_menu_en.png" /></li>
+<li><p>in the database toolbar:</p><img src="db_toolbar_en.png" /></li>
+</u>
+</p>
+
+When you push the reload button the plugin reads all default-styles (of the PostgreSQL-layers inside the opened QGIS-project) stored in the PostgreSQL database.The found styles replace the <b>active</b> styles of these layers.
+
+<p id="warning">The plugin will overwrite the <b>active</b> style stored inside the current QGIS-Project for these layers.</p>
+<p>( The <b>active</b> style for these layers stored in the <b>QGIS-Project</b> does not have to be the <b>default</b> style stored in the QGIS-Project.)</p>
+<p>
+<img src="aktiver_stil_en.png" />
+</p>
+
+As it is perhaps not wanted to overwrite the current active styles of the QGIS-project there will a prompt before overwriting the styles:
+<p>
+<img src="rueckfrage_en.png" />
+</b>
+</body>

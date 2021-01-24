@@ -13,9 +13,6 @@ Load default styles which are saved in the postgresql DB
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# loading by Fahmihorizon from the Noun Project
-# palette by Markus from the Noun Project
-# Grundidee des Reloadens: https://gis.stackexchange.com/a/371589/67477 
 #---------------------------------------------------------------------"""
 
 

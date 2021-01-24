@@ -1,1 +1,39 @@
-de
+<head>
+<style>
+body {
+    font:1em helvetica,arial,freesans,clean,sans-serif;
+    color:black;
+    line-height:1.4em;
+    background-color: #F8F8F8;
+    padding: 0.7em;
+}
+#warning
+{
+color:red;
+font-size: 1.5em;
+}
+
+</style>
+</head>
+<body>
+<h1>Reload DB-Styles</h1>
+<p>Das Plugin l&auml;dt für alle im QGIS-Projekt vorhandenen PostgreSQL-Layer die in der Datenbank hinterlegten default-Stile und &uuml;berschreibt damit die aktuell eingestellten aktiven Stile der Layer.</p>
+<p>Zu finden ist es :
+<ul>
+<li><p>im Datenbank-Men&uuml;:</p> <img src="db_menu.png" /></li>
+<li><p>in der Datenbank-Toolbar:</p><img src="db_toolbar.png" /></li>
+</u>
+</p>
+
+Bei Dr&uuml;cken des Reload-Buttons wird f&uuml;r alle PostgreSQL-Layer der in der Datenbank hinterlegte Default-Stil ausgelesen und dem entsprechenden Layer als <b>aktiver</b> Stil eingestellt.
+<p id="warning">Hierbei wird der im QGIS-Projekt hinterlegte <b>aktive</b> Stil &uuml;berschrieben.</p>
+<p>( Der <b>im QGIS-Projekt</b> f&uuml;r den Layer gerade <b>aktive</b> Stil muss nicht zwingend der im QGIS-Projekt hinterlegte <b>Default</b>-Stil des Layers sein.)</p>
+<p>
+<img src="aktiver_stil.png" />
+</p>
+
+Da ein &Uuml;berschreiben des gerade aktiv eingestellten Stiles ggf. nicht erw&uuml;nscht ist erfolgt erst eine R&uuml;ckfrage bevor der Stil &uuml;berschrieben wird:
+<p>
+<img src="rueckfrage.png" />
+</b>
+</body>
